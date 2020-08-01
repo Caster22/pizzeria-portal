@@ -56,6 +56,6 @@
 - '/kitchen'
     - wyświetla listę zamówień w kolejności ich złożenia
     - lista musi zawierać:
-        - numer stolika (lub zamównienia zdalnego)
+        - numer stolika (lub zamówienia zdalnego)
         - pełne informacje dot. zamówionych dań
     - na liście musi być możliwość oznaczenia zamówienia jako zrealizowane
