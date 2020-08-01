@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <title>Pizzeria</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:700i|Fira+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="vendor/range-slider.min.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="header__wrapper">
+        <div class="logo">
+          <h1 class="logo__title"><span>Hell's~</span>Cookie!</h1>
+          <h2 class="logo__subtitle logo__underline logo__underline--stars">the most crazy cookies you can think of!</h2>
+        </div>
+        <div class="main-nav">
+          <a href="#welcome">Home</a>
+          <a href="#order">Setup</a>
+          <a href="#booking">Table</a>
+          <a href="#delivery">Delivery</a>
+          <div id="cart" class="cart">
+            <div class="cart__summary">
+              <span class="cart__total-number">0</span>
+              <span class="cart__total-price">Total sum: $<strong>0</strong></span>
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-money-bill-wave cart__icon"></i>
+            </div>
+            <div class="cart__content">
+              <form class="cart__order">
+                <ul class="cart__order-summary no-spacing">
+                </ul>
+                <ul class="cart__order-price">
+                  <li class="cart__order-subtotal">
+                    <span class="cart__order-price-name">Subtotal:</span>
+                    <span class="cart__order-price-sum">$<strong>0</strong></span>
+                  </li>
+                  <li class="cart__order-delivery">
+                    <span class="cart__order-price-name">Delivery:</span>
+                    <span class="cart__order-price-sum">$<strong>0</strong></span>
+                  </li>
+                  <li class="cart__order-total">
+                    <span class="cart__order-price-name"><strong>Total:</strong></span>
+                    <span class="cart__order-price-sum">$<strong>0</strong></span>
+                  </li>
+                </ul>
+                <div class="cart__order-confirmation">
+                  <input type="tel" name="phone" placeholder="Phone number">
+                  <input type="text" name="address" placeholder="Adress">
+                  <button type="submit" class="btn-secondary">Order</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="pages">
+    <section id="welcome">
+      <div id="welcome-wrapper" class="welcome-wrapper container"></div>
+    </section>
+    <section id="order">
+      <div id="product-list" class="product-list container"></div>
+    </section>
+    <section id="booking">
+      <div class="booking-wrapper container"></div>
+    </section>
+    <section id="delivery">
+      <div class="delivery-wrapper container"></div>
+    </section>
+  </div>
+
+  <script id="template-welcome-page" type="text/x-handlebars-template">
+    <div class="welcome-page">
+      <section class="opener">
+        <div class="row">
+          <div class="col-6 opener__list">
+            <div class="row row-border">
+              <div class="col-6 opener__setup">
+                <a href="#order">
+                  <img src="https://c1.wallpaperflare.com/preview/706/179/614/bakery-coffee-c-cafe.jpg" alt="setup">
+                </a>
+              </div>
+              <div class="col-6 opener__text">
+                <h3 class="opener__setup--header">SETUP</h3>
+                <p>Choose your own setup from our craziest toppings you can ever think!</p>
+              </div>
+            </div>
+            <div class="row row-border">
+              <div class="col-6 opener__setup">
+                <a href="#booking">
+                  <img src="https://www.goralpoleca.pl/thumb/galeria/11389/450/300/resize/apartament-sweet-orange.jpg" alt="table">
+                </a>
+              </div>
+              <div class="col-6 opener__text">
+                <h3 class="opener__setup--header">TABLE</h3>
+                <p>Book now one from our tables and be sure that you will have place to eat!</p>
+              </div>
+            </div>
+            <div class="row row-border">
+              <div class="col-6 opener__setup">
+                <a href="#delivery">
+                  <img src="https://i.pinimg.com/originals/8b/d3/1f/8bd31fbe7199736d88375f064d6e52cf.jpg" alt="delivery">
+                </a>
+              </div>
+              <div class="col-6 opener__text">
+                <h3 class="opener__setup--header">DELIVERY</h3>
+                <p>Order something from our menu and get it fresh in your home!</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 opener__time--container">
+            <div class="opener__time--content">
+              <h2 class="opener__time--header">We are open:</h2>
+              <p class="opener__time--header opener__time--body">Monday - Friday<br>From 8 AM to 8 PM</p>
+            </div>
+            <img class="opener__time--img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTofxTYlszK9AJT5a5cCuG-IcyN1GX2JKS2xicdApOM0TCD7Sme&usqp=CAU" alt="cookieCat">
+          </div>
+        </div>
+      </section>
+      <section class="slider">
+        <div class="slider__content">
+          <img class="slider__content--img" src="https://images.squarespace-cdn.com/content/v1/5418a5bae4b0877352524377/1417901289224-1PYCVGGR6BK9CP1JO5JD/ke17ZwdGBToddI8pDm48kGRKL4JIl0FV9_gnSO4xknsUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2dr_4a0Jznzw0OCRTJVMM15xP37X5RQsGYt-cipN4dBgkpC969RuPXvt2ZwyzUXQf7Q/image-asset.jpeg" alt="cookie1">
+        </div>
+        <div class="slider__content">
+          <img class="slider__content--img" src="https://www.instagram.com/p/B2XvTt3jKiO/media/?size=l" alt="cookie2">
+        </div>
+        <div class="slider__content">
+          <img class="slider__content--img" src="https://s3.amazonaws.com/secretsaucefiles/photos/images/000/011/363/large/Screen_Shot_2016-09-19_at_7.21.19_PM.png?1474338620" alt="cookie3">
+        </div>
+        <div class="slider__content">
+          <img class="slider__content--img" src="https://i.pinimg.com/originals/fa/01/1d/fa011d1fe1514aa353d8a039680de3b0.jpg" alt="cookie4">
+        </div>
+        <div class="slider__content">
+          <img class="slider__content--img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5a7z5kn8qnF4VmCQ6XjzxRp72psqvA95Wbljt22YDMlktdjk9&s" alt="cookie5">
+        </div>
+        <div class="slider__content">
+          <img class="slider__content--img" src="https://i.pinimg.com/originals/66/e4/cd/66e4cda25a37f744669d8f0c155d9123.png" alt="cookie6">
+        </div>
+      </section>
+      <section class="gallery">
+        <div class="row">
+          <div class="banner">
+            <img class="banner__img"  src="https://d37219swed47g7.cloudfront.net/media/images/guides/the-best-lakeview-restaurants/banners/Tied%20House%20Exterior%202019%20%C2%A9%20Austin%20Isaac%20Peters.jpg" alt="banner">
+          </div>
+        </div>
+      </section>
+    </div>
+  </script>
+
+  <script id="template-booking-widget" type="text/x-handlebars-template">
+    <div class="booking-widget">
+      <h2 class="page__title no-spacing">Book a table</h2>
+      <form class="booking-form">
+        <div class="time-picker">
+          <div class="date-picker">
+            <label class="booking-option-title">Pick a date</label>
+            <input type="text" name="date">
+          </div>
+          <div class="hour-picker range-slider">
+            <div class="output"></div>
+            <label class="booking-option-title">Pick a time</label>
+            <input type="range" name="hour" value="8" min="8" max="20" step="0.5">
+          </div>
+        </div>
+        <div class="floor-plan">
+          <div class="object entry">entry</div>
+          <div class="object bar">bar</div>
+          <div class="object table" data-table="1">table-1</div>
+          <div class="object table table--round" data-table="2">table-2</div>
+          <div class="object table" data-table="3">table-3</div>
+          <div class="object table" data-table="4">table-4</div>
+        </div>
+        <div class="booking-options"> <!-- options -->
+          <label class="booking-option-title"> <!-- option-row -->
+            People
+            <div class="widget-amount people-amount"> <!-- widget-amount -->
+              <a class="btn-quantity" href="#less"><i class="fas fa-minus"></i></a>
+              <input class="amount" type="text" name="people" value="1">
+              <a class="btn-quantity" href="#more"><i class="fas fa-plus"></i></a>
+            </div>
+          </label>
+          <label class="booking-option-title"> <!-- option-row -->
+            Hours
+            <div class="widget-amount hours-amount"> <!-- widget-amount -->
+              <a class="btn-quantity" href="#less"><i class="fas fa-minus"></i></a>
+              <input class="amount" type="text" name="hours" value="1">
+              <a class="btn-quantity" href="#more"><i class="fas fa-plus"></i></a>
+            </div>
+          </label>
+          <div> <!-- option-row -->
+            <span class="booking-option-title">Starters</span>
+            <div class="checkbox"> <!-- checkbox -->
+              <label>
+                <input type="checkbox" id="water" name="starter" value="water">
+                <span class="checkbox__checkmark"></span>
+                Water
+              </label>
+            </div>
+            <div class="checkbox"> <!-- checkbox -->
+              <label>
+                <input type="checkbox" id="bread" name="starter" value="sour cream">
+                <span class="checkbox__checkmark"></span>
+                Sour cream
+              </label>
+            </div>
+            <div class="checkbox"> <!-- checkbox -->
+              <label>
+                <input type="checkbox" id="beer" name="starter" value="beer">
+                <span class="checkbox__checkmark"></span>
+                Beer
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="order-confirmation">
+          <input type="tel" name="phone" placeholder="Your phone">
+          <input type="text" name="address" placeholder="Your address">
+          <button type="submit" class="btn-secondary">Book table</button>
+        </div>
+      </form>
+    </div>
+  </script>
+
+  <script id="template-delivery-page" type="text/x-handlebars-template">
+    <div class="delivery-page">
+    <section class="delivery">
+      <div class="row delivery__body">
+        <div class="col-6 delivery__body--text">
+          <h1> You can order delivery to your place!</h1>
+          <h3>All you need to do is to tell us u want delivery and thats it!</h3>
+        </div>
+        <div class="col-6 delivery__body--img">
+          <img class="delivery__body--image" src="https://media.istockphoto.com/vectors/quick-delivery-truck-gift-box-drawing-vector-id478223653" alt="car">
+        </div>
+      </div>
+    </section>
+    </div>
+  </script>
+
+  <script id="template-cart-product" type="text/x-handlebars-template">
+    <li>
+      <div class="widget-amount"> <!-- widget-amount -->
+        <a class="btn-quantity btn-quantity--lt" href="#less"><i class="fas fa-minus"></i></a>
+        <input class="amount" type="text" value="{{ amount }}">
+        <a class="btn-quantity btn-quantity--lt" href="#more"><i class="fas fa-plus"></i></a>
+      </div>
+      <div class="cart__product">
+        <div class="cart__product-header">
+          <span>{{ name }}</span>
+          <span>$<strong class="cart__product-price">{{ price }}</strong></span>
+        </div>
+        <ul class="cart__product-details no-spacing">
+          {{#each params}}
+            <li>
+              <span class="cart__product-details-label">{{ label }}</span>
+              <span>{{#joinValues options}}, {{/joinValues}}</span>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      <ul class="cart__action-buttons no-spacing">
+        <li><a href="#edit">Edit<br><i class="fas fa-pencil-alt"></i></a></li>
+        <li><a href="#remove">Remove<i class="fas fa-trash-alt"></i></a></li>
+      </ul>
+    </li>
+  </script>
+
+  <script id="template-menu-product" type="text/x-handlebars-template">
+    <article class="product"> <!-- product -->
+
+        <header class="product__header">
+          <h3 class="product__name no-spacing">{{ name }} <i class="fas fa-chevron-down product__icon"></i></h3>
+          <p class="product__base-price no-spacing">${{ price }}</p>
+        </header>
+        <div class="product__description"> <!-- description -->
+          <p>{{{ description }}}</p>
+        </div> <!-- .description -->
+        <div class="product__wrapper"> <!-- details -->
+          <form class="product__order">
+            <ul class="product__params"> <!-- params -->
+              {{#each params as |param paramId| }}
+              {{#ifEquals type "checkboxes"}}
+              <li> <!-- checkboxes -->
+                <h3 class="product__params-title">{{{ label }}}</h3>
+                {{#each options}}
+                <div class="checkbox"> <!-- checkbox -->
+                  <label>
+                    <input type="checkbox" name="{{ paramId }}" value="{{ @key }}" id="{{ @key }}" {{#if default}}checked{{/if}}>
+                    <span class="checkbox__checkmark"></span>
+                    {{{ label }}} (${{{ price }}})
+                  </label>
+                </div>
+                {{/each}}
+              </li>
+              {{/ifEquals}}
+              {{#ifEquals type "radios"}}
+              <li> <!-- radios -->
+                <h3 class="product__params-title">{{{ label }}}</h3>
+                {{#each options}}
+                <div class="checkbox checkbox--round"> <!-- radio -->
+                  <label>
+                    {{{ label }}} (${{{ price }}})
+                    <input type="radio" name="{{ paramId }}" value="{{ @key }}" id="{{ @key }}" {{#if default}}checked{{/if}}>
+                    <span class="checkbox__checkmark"></span>
+                  </label>
+                </div>
+                {{/each}}
+              </li>
+              {{/ifEquals}}
+              {{#ifEquals type "select"}}
+              <li> <!-- select -->
+                <h3 class="product__params-title">{{{ label }}}</h3>
+                <select name="{{ paramId }}">
+                  {{#each options}}
+                  <option value="{{ @key }}" {{#if default}}selected{{/if}}>{{{ label }}} (${{{ price }}})</option>
+                  {{/each}}
+                </select>
+              </li>
+              {{/ifEquals}}
+              {{/each}}
+            </ul>
+            <div class="amount"> <!-- controls -->
+              <div class="widget-amount"> <!-- widget-amount -->
+                <h3 class="product__params-title">Select quantity</h3>
+                <a class="btn-quantity" href="#less"><i class="fas fa-minus"></i></a>
+                <input class="amount" type="text" value="1">
+                <a class="btn-quantity" href="#more"><i class="fas fa-plus"></i></a>
+              </div>
+              <p class="product__total-price">
+                Total: $<span class="price">{{{ price }}}</span>
+              </p>
+              <div> <!-- add-to-cart -->
+                <a class="btn-primary" href="#add-to-cart">Add to cart</a>
+              </div>
+            </div>
+          </form>
+          <div class="product__images {{ class }}"> <!-- images -->
+            {{#each images}}
+            {{{ this }}}
+            {{/each}}
+          </div>
+        </div>
+
+    </article> <!-- .product -->
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="vendor/range-slider.min.js"></script>
+  <script src="js/app.js" type="module"></script>
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.slider').slick({
+        infinite: true,
+        arrows: false,
+        slidesToShow: 3,
+        slidesToScroll: 3
+      });
+    });
+  </script>
+
+</body>
+</html>
