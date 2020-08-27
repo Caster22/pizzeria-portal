@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './Tables.module.scss'
+import styles from './Booking.module.scss';
 
 const Booking = (value) => {
   const id = value.match.params.id;
 
   return(
     <div className={styles.component}>
-      <h2>Table View --> {id}</h2>
+      <h2>Table View -- {id}</h2>
     </div>
   );
 };

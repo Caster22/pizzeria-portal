@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from './Tables.module.scss'
+import styles from './Order.module.scss';
 
-const Events = (value) => {
+const Order = (value) => {
   const id = value.match.params.id;
 
   return(
     <div className={styles.component}>
-      <h2>Table View --> {id}</h2>
+      <h2>Order View -- {id}</h2>
     </div>
   );
 };
 
-export default Events;
+export default Order;

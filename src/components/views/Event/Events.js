@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from './Waiter.module.scss'
+import styles from './Events.module.scss';
 
-const Order = (value) => {
+const Events = (value) => {
   const id = value.match.params.id;
 
   return(
     <div className={styles.component}>
-      <h2>Order View --> {id}</h2>
+      <h2>Table View -- {id}</h2>
     </div>
   );
 };
 
-export default Order;
+export default Events;

@@ -67,6 +67,7 @@
     "typescript": "^3.9.7"
   },
   "devDependencies": {
+    "@material-ui/styles": "^4.10.0",
     "eslint-watch": "^7.0.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",

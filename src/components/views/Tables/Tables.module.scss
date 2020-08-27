@@ -3,3 +3,15 @@
 .component {
   padding: $base-size;
 }
+
+.tableMargin {
+  margin: 60px 0;
+  .title {
+    color: $main-color;
+    margin-bottom: 50px;
+  }
+  .button {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+}
