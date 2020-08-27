@@ -2,4 +2,7 @@
 
 .component {
   padding: $base-size;
+  .title {
+    color: $main-color;
+  }
 }
