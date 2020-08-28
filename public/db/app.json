@@ -202,7 +202,81 @@
       }
     }
   ],
-  "order": [],
+  "order": [
+    {
+      "address": "",
+      "phone": "",
+      "tableNo": "1",
+      "totalPrice": 40,
+      "totalNumber": 1,
+      "subtotalPrice": 20,
+      "deliveryFee": 20,
+      "products": [
+        {
+          "id": "pizza",
+          "amount": 1,
+          "price": 20,
+          "priceSingle": 20,
+          "params": {
+            "sauce": {
+              "tomato": "tomato"
+            },
+            "toppings": {
+              "olives": "olives",
+              "redPeppers": "redPeppers",
+              "greenPeppers": "greenPeppers",
+              "mushrooms": "mushrooms",
+              "basil": "basil"
+            },
+            "crust": {
+              "standard": "standard"
+            }
+          }
+        },
+        {
+          "id": "cake",
+          "amount": 9,
+          "price": 27,
+          "priceSingle": 9,
+          "params": {}
+        },
+        {
+          "id": "cake",
+          "amount": 5,
+          "price": 45,
+          "priceSingle": 9,
+          "params": {}
+        }
+      ],
+      "id": 123
+    },
+    {
+      "address": "",
+      "phone": "",
+      "tableNo": "1",
+      "totalPrice": 48,
+      "totalNumber": 14,
+      "subtotalPrice": 20,
+      "deliveryFee": 20,
+      "products": [
+        {
+          "id": "cake",
+          "amount": 9,
+          "price": 27,
+          "priceSingle": 9,
+          "params": {}
+        },
+        {
+          "id": "cake",
+          "amount": 5,
+          "price": 45,
+          "priceSingle": 9,
+          "params": {}
+        }
+      ],
+      "id": 234
+    }
+  ],
   "event": [
     {
       "id": 1,
@@ -264,6 +338,38 @@
       "duration": 2,
       "ppl": 4,
       "starters": ["water"]
+    }
+  ],
+  "tables": [
+    {
+      "id": "1",
+      "status": "free",
+      "order": null
+    },
+    {
+      "id": "2",
+      "status": "thinking",
+      "order": null
+    },
+    {
+      "id": "3",
+      "status": "ordered",
+      "order": 123
+    },
+    {
+      "id": "4",
+      "status": "prepared",
+      "order": 234
+    },
+    {
+      "id": "5",
+      "status": "delivered",
+      "order": 345
+    },
+    {
+      "id": "6",
+      "status": "paid",
+      "order": 456
     }
   ]
 }
