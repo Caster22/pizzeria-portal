@@ -11,14 +11,14 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const demoContent = [
+/*const demoContent = [
   {id: '1', status: 'free', order: null},
   {id: '2', status: 'thinking', order: null},
   {id: '3', status: 'ordered', order: 123},
   {id: '4', status: 'prepared', order: 234},
   {id: '5', status: 'delivered', order: 345},
   {id: '6', status: 'paid', order: 456},
-];
+];*/
 
 
 class Waiter extends React.Component {
@@ -37,36 +37,50 @@ class Waiter extends React.Component {
     fetchTables();
   }
 
-  renderActions(status, id){
+  renderActions(status, id) {
     const { sendTableStatus } = this.props;
 
     switch (status) {
       case 'free':
         return (
           <>
-            <Button onClick={() => sendTableStatus({id: id, status: 'thinking'})}>thinking</Button>
-            <Button onClick={() => sendTableStatus({id: id, status: 'new order'})}>new order</Button>
+            <Button onClick={() => sendTableStatus(id, 'thinking')}>
+              thinking
+            </Button>
+            <Button onClick={() => sendTableStatus(id, 'new order')}>
+              new order
+            </Button>
           </>
         );
       case 'thinking':
         return (
-          <Button onClick={() => sendTableStatus({id: id, status: 'new order'})}>new order</Button>
+          <Button onClick={() => sendTableStatus(id, 'new order')}>
+            new order
+          </Button>
         );
       case 'ordered':
         return (
-          <Button onClick={() => sendTableStatus({id: id, status: 'prepared'})}>prepared</Button>
+          <Button onClick={() => sendTableStatus(id, 'prepared')}>
+            prepared
+          </Button>
         );
       case 'prepared':
         return (
-          <Button onClick={() => sendTableStatus({id: id, status: 'delivered'})}>delivered</Button>
+          <Button onClick={() => sendTableStatus(id, 'delivered')}>
+            delivered
+          </Button>
         );
       case 'delivered':
         return (
-          <Button onClick={() => sendTableStatus({id: id, status: 'paid'})}>paid</Button>
+          <Button onClick={() => sendTableStatus(id, 'paid')}>
+            paid
+          </Button>
         );
       case 'paid':
         return (
-          <Button onClick={() => sendTableStatus({id: id, status: 'free'})}>free</Button>
+          <Button onClick={() => sendTableStatus(id, 'free')}>
+            free
+          </Button>
         );
       default:
         return null;
@@ -74,8 +88,11 @@ class Waiter extends React.Component {
   }
 
   render() {
-    const { loading: { active, error }, tables } = this.props;
-
+    const {
+      loading: { active, error },
+      tables,
+    } = this.props;
+    console.log(tables);
     if (active || !tables.length) {
       return (
         <Paper className={styles.component}>
@@ -103,7 +120,7 @@ class Waiter extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {demoContent.map(row => (
+              {tables.map((row) => (
                 <TableRow key={row.id}>
                   <TableCell component='th' scope='row'>
                     {row.id}
@@ -119,7 +136,7 @@ class Waiter extends React.Component {
                     )}
                   </TableCell>
                   <TableCell>
-                    {this.renderActions(row.status)}
+                    {this.renderActions(row.status, row.id)}
                   </TableCell>
                 </TableRow>
               ))}
